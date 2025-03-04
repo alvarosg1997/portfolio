@@ -22,7 +22,7 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 # Copy only necessary files
-COPY --from=builder /app/public ./public
+COPY --from=builder /app ./app
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
@@ -36,4 +36,5 @@ EXPOSE 3000
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 
-CMD ["node", "server.js"]
+# Use next start to run the Next.js app
+CMD ["npm", "start"]
