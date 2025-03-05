@@ -26,3 +26,4 @@ jobs:
         with:
           push: true 
           tags: alvarosg97/portfolio:${{ github.sha }}
+          platforms: linux/amd64,linux/arm64
