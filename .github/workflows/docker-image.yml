@@ -3,7 +3,7 @@ on:
     branches-ignore:
     - master
 
-name: CI
+name: CI-CD
 jobs:
   docker:
     runs-on: ubuntu-latest
