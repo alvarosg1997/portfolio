@@ -17,16 +17,16 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Crear un usuario no-root
+# Create a non-root user
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copiar el resultado del build standalone
+# Copy only necessary files
+COPY --from=builder /app ./app
 COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/static ./.next/static
 
-# Permisos
+# Set correct permissions
 RUN chown -R nextjs:nodejs /app
 
 USER nextjs
@@ -36,4 +36,7 @@ EXPOSE 3000
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 
+# Use next start to run the Next.js app
 CMD ["node", "server.js"]
+
+
