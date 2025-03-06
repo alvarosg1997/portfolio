@@ -38,5 +38,3 @@ ENV HOSTNAME "0.0.0.0"
 
 # Use next start to run the Next.js app
 CMD ["node", "server.js"]
-
-

@@ -20,7 +20,7 @@ export function Hero() {
           Site Reliability Engineer
         </h2>
         <p className="max-w-2xl mx-auto text-lg mb-12 text-muted-foreground">
-          Specializing in infrastructure automation, cloud architecture, and building reliable, scalable systems. 
+          Specializing in infrastructure automation, cloud architecture, and building reliable, scalable systems in AWS. 
           Passionate about DevOps culture and continuous improvement.
         </p>
         <div className="flex gap-4 justify-center mb-12">

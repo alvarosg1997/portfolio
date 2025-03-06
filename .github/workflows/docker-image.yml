@@ -37,18 +37,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v3
+      - name: SSH into EC2 and deploy
+        uses: appleboy/ssh-action@v0.1.10
         with:
-          version: 'latest'
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /home/ubuntu/
+            sudo docker pull alvarosg97/portfolio:${{ github.sha }}
+            sed -i "s|image: alvarosg97/portfolio:.*|image: alvarosg97/portfolio:${{ github.sha }}|g" docker-compose.yaml
+            sudo docker compose down
+            sudo docker compose up -d
 
-      - name: Set up DigitalOcean kubeconfig
-        run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.DIGITALOCEAN_KUBECONFIG }}" > $HOME/.kube/config
-          chmod 600 $HOME/.kube/config
-
-      - name: Deploy to DigitalOcean Kubernetes
-        run: |
-          kubectl set image deployment/portfolio portfolio=alvarosg97/portfolio:${{ github.sha }}
-          kubectl rollout status deployment/portfolio
