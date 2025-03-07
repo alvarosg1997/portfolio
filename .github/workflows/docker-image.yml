@@ -1,9 +1,10 @@
+name: CI-CD
+
 on:
   push:
     branches-ignore:
       - master
 
-name: CI-CD
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -31,11 +32,29 @@ jobs:
           platforms: linux/amd64,linux/arm64
 
   deploy:
-    needs: docker
+    name: deploy
     runs-on: ubuntu-latest
+    env:
+      AWS_SECURITY_GROUP_ID: ${{ secrets.AWS_SECURITY_GROUP_ID }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Get runner IP address
+        id: ip
+        uses: haythem/public-ip@v1.2
+
+      - name: Whitelist runner IP address
+        run: |
+          aws ec2 authorize-security-group-ingress \
+            --group-id $AWS_SECURITY_GROUP_ID \
+            --protocol tcp \
+            --port 22 \
+            --cidr ${{ steps.ip.outputs.ipv4 }}/32
 
       - name: SSH into EC2 and deploy
         uses: appleboy/ssh-action@v0.1.10
@@ -50,3 +69,10 @@ jobs:
             sudo docker compose down
             sudo docker compose up -d
 
+      - name: Revoke runner IP address
+        run: |
+          aws ec2 revoke-security-group-ingress \
+            --group-id $AWS_SECURITY_GROUP_ID \
+            --protocol tcp \
+            --port 22 \
+            --cidr ${{ steps.ip.outputs.ipv4 }}/32
