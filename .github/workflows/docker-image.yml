@@ -79,6 +79,9 @@ jobs:
             # Levantar los nuevos contenedores
             docker-compose up -d
 
+            docker cp portfolio:/app/app/cv-2024.pdf ./cv/cv-2024.pdf
+
+
 
       - name: Revoke runner IP address (always run)
         if: always()
