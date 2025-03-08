@@ -61,9 +61,24 @@ jobs:
           script: |
             cd /home/ubuntu/
             sudo docker pull alvarosg97/portfolio:${{ github.sha }}
-            sed -i "s|image: alvarosg97/portfolio:.*|image: alvarosg97/portfolio:${{ github.sha }}|g" docker-compose.yaml
+            
+            # Obtener el ID de la imagen antigua (excepto la nueva)
+            OLD_IMAGE_ID=$(docker images alvarosg97/portfolio --format "{{.ID}}" | tail -n +2)
+
+            # Detener los contenedores actuales
             docker-compose down
+
+            # Eliminar la imagen antigua
+            if [ -n "$OLD_IMAGE_ID" ]; then
+              sudo docker rmi -f $OLD_IMAGE_ID
+            fi
+
+            # Actualizar la imagen en docker-compose.yaml
+            sed -i "s|image: alvarosg97/portfolio:.*|image: alvarosg97/portfolio:${{ github.sha }}|g" docker-compose.yaml
+
+            # Levantar los nuevos contenedores
             docker-compose up -d
+
 
       - name: Revoke runner IP address (always run)
         if: always()

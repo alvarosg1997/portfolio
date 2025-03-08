@@ -41,7 +41,7 @@ export function Hero() {
           </Button>
         </div>
         <Button asChild>
-          <a href="/cv.pdf" download>
+          <a href="/cv-2024.pdf" download>
             Download CV
           </a>
         </Button>
