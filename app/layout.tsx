@@ -1,14 +1,14 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
-import { Toaster } from '@/components/ui/toaster';
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Álvaro Sánchez González - Site Reliability Engineer',
-  description: 'Professional portfolio of Álvaro Sánchez González, a Site Reliability Engineer specializing in infrastructure management, automation, and cloud technologies.',
+  title: 'Álvaro Sánchez - DevOps & Cloud Engineer',
+  description: 'DevOps and Cloud Engineer specializing in AWS, Terraform, Python, and Cloud Technologies',
+  keywords: 'DevOps, Cloud Engineer, AWS, Terraform, Python, Kubernetes, Docker, CI/CD',
 };
 
 export default function RootLayout({
@@ -17,16 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="es" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
-          <Toaster />
         </ThemeProvider>
       </body>
     </html>
