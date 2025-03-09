@@ -32,22 +32,22 @@ const technologies = [
 
 const projects = [
   {
-    title: "Infraestructura Multi-Region AWS",
-    description: "Implementación de arquitectura altamente disponible en múltiples regiones de AWS usando Terraform y mejores prácticas de IaC.",
-    tags: ["AWS", "Terraform", "High Availability"],
-    link: "https://github.com/yourusername/aws-multi-region"
+    title: "Infraestructura Multi-Cloud",
+    description: "Implementación de arquitectura altamente disponible en múltiples Cloud usando Terraform y mejores prácticas de IaC.",
+    tags: ["AWS", "Terraform", "High Availability", "Cloud"],
+    link: "https://github.com/alvarosg1997/infraestructure"
   },
   {
-    title: "Platform Engineering",
-    description: "Plataforma de desarrollo interno que automatiza el ciclo de vida completo de las aplicaciones, desde el desarrollo hasta la producción.",
-    tags: ["Kubernetes", "ArgoCD", "GitOps"],
-    link: "https://github.com/yourusername/platform-engineering"
+    title: "Portfolio CI-CD",
+    description: "Pipeline de CI/CD para despliegue automático de tu portfolio personal en AWS usando GitHub Actions.",
+    tags: ["CI/CD", "GitHub Actions", "AWS", "Serverless"],
+    link: "https://github.com/alvarosg1997/portfolio"
   },
   {
     title: "Monitorización y Alertas",
-    description: "Sistema completo de monitorización y alertas utilizando Prometheus, Grafana y AlertManager para infraestructura crítica.",
+    description: "Sistema completo de monitorización y alertas utilizando Prometheus, Grafana y AlertManager para infraestructura crítica mediante terraoform.",
     tags: ["Prometheus", "Grafana", "SRE"],
-    link: "https://github.com/yourusername/monitoring-stack"
+    link: "https://github.com/alvarosg1997/infraestructure/tree/main/Grafana"
   }
 ]
 
@@ -108,8 +108,8 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-8">Sobre mí</h2>
             <div className="space-y-4 text-lg">
               <p>
-                Soy un DevOps & Cloud Engineer con más de 5 años de experiencia en el diseño
-                e implementación de soluciones cloud empresariales. Mi experiencia se centra
+                Soy un DevOps & Cloud Engineer con más de 2 años de experiencia en el diseño
+                e implementación de soluciones cloud. Mi experiencia se centra
                 en AWS, donde he liderado la transformación de infraestructuras tradicionales
                 a arquitecturas cloud nativas.
               </p>
@@ -197,13 +197,13 @@ export default function Home() {
             </p>
             <div className="flex flex-col gap-4">
               <Button size="lg" asChild>
-                <a href="mailto:tu@email.com">
+                <a href="mailto:alvarosanchezgon1997@gmail.com">
                   <Mail className="mr-2 h-5 w-5" />
-                  tu@email.com
+                  alvarosanchezgon1997@gmail.com
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/alvarosg1997" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="mr-2 h-5 w-5" />
                   LinkedIn
                 </a>
@@ -222,12 +222,12 @@ export default function Home() {
             </span>
             <div className="flex gap-4">
               <Button variant="ghost" size="icon" asChild>
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/alvarosg1997" target="_blank" rel="noopener noreferrer">
                   <Github className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/%C3%A1lvaro-s%C3%A1nchez-gonz%C3%A1lez-9325b81a9/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-5 w-5" />
                 </a>
               </Button>
