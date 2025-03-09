@@ -79,7 +79,7 @@ jobs:
             # Levantar los nuevos contenedores
             docker-compose up -d
 
-            sudo docker cp portfolio:/app/app/cv-2024.pdf ./cv/cv-2024.pdf
+            # sudo docker cp portfolio:/app/app/cv-2024.pdf ./cv/cv-2024.pdf
 
 
 

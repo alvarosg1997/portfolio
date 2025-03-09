@@ -34,5 +34,5 @@ EXPOSE 3000
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 
-# Use next start to run the Next.js app
-CMD ["npm", "run", "start"]
+# Use serve to run the statically exported app
+CMD ["npx", "serve", "out"]
