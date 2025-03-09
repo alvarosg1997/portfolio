@@ -37,4 +37,4 @@ ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 
 # Use next start to run the Next.js app
-CMD ["node", "server.js"]
+CMD ["npm", "run", "start"]
