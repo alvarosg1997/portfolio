@@ -21,10 +21,8 @@ ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy only necessary files
-COPY --from=builder /app ./app
-# COPY --from=builder /app/.next/standalone ./
-# COPY --from=builder /app/.next/static ./.next/static
+# Copy the built app and necessary files
+COPY --from=builder /app ./
 
 # Set correct permissions
 RUN chown -R nextjs:nodejs /app
