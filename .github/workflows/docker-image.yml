@@ -66,7 +66,10 @@ jobs:
             OLD_IMAGE_ID=$(docker images alvarosg97/portfolio --format "{{.ID}}" | tail -n +2)
 
             # Detener los contenedores actuales
-            docker-compose down
+            docker-compose stop portfolio
+            # Eliminar solo el contenedor de portfolio (sin tocar otros)
+            docker-compose rm -f portfolio
+
 
             # Eliminar la imagen antigua
             if [ -n "$OLD_IMAGE_ID" ]; then
@@ -78,8 +81,6 @@ jobs:
 
             # Levantar los nuevos contenedores
             docker-compose up -d
-
-            # sudo docker cp portfolio:/app/app/cv-2024.pdf ./cv/cv-2024.pdf
 
 
 
