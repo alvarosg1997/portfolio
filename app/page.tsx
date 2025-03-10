@@ -199,7 +199,7 @@ export default function Home() {
               <Button size="lg" asChild>
                 <a href="mailto:alvarosanchezgon1997@gmail.com">
                   <Mail className="mr-2 h-5 w-5" />
-                  alvarosanchezgon1997@gmail.com
+                  Enviame un correo
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
