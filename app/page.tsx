@@ -91,7 +91,7 @@ export default function Home() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/alvarosg1997" target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-5 w-5" />
                   GitHub
                 </a>
