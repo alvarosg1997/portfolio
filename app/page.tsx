@@ -77,7 +77,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              DevOps & Cloud Engineer
+              DevOps & Cloud Engineer AWS
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Especializado en diseñar y mantener infraestructuras cloud escalables y seguras.
